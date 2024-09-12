@@ -1,17 +1,16 @@
 body {
-  background-color: #000;
-  height: 100vh;
-  width: 100vw;
   overflow: hidden;
+  margin: 0;
 }
 
 #terminal {
+  background-color: #000;
   color: #4cd711;
   font-family: monospace;
   padding: 1em;
-  border-radius: 0.5em;
-  width: 85vw;
-  height: 85vh;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 .flex {
@@ -26,7 +25,7 @@ body {
   display: inline-block;
   padding: 0;
   margin: 0;
-  font-size: 0.75;
+  font-size: 1;
 }
 
 #terminal input {
@@ -55,17 +54,51 @@ body {
     width: 100%;
   }
 }
+
 .typing {
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 4s steps(40, end);
+  animation: typing 1.5s steps(40, end);
 }
 
-.felx-grow {
+.flex-grow {
   flex-grow: 1;
 }
 
-.flex-start-end {
+.flex-between {
   justify-content: space-between;
+}
+
+.column {
+  flex-direction: column;
+}
+
+#main-terminal {
+  border-bottom: 1px solid #4cd711;
+}
+
+
+#main-terminal ul {
+  list-style-type: none;
+  padding: 0;
+  display: inline-block;
+  margin: 0;
+}
+
+#main-terminal li p {
+  font-size: 1.5em;
+  margin: 0;
+  padding-bottom: 12px;
+}
+
+#main-terminal li p::before {
+  content: " ";
+  margin-right: 0.5em;
+}
+
+#main-terminal li p.selected::before {
+  content: ">";
+  color: #4cd711;
+  margin-right: 0.5em;
 }
 
