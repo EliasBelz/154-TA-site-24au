@@ -1,0 +1,71 @@
+body {
+  background-color: #000;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+#terminal {
+  color: #4cd711;
+  font-family: monospace;
+  padding: 1em;
+  border-radius: 0.5em;
+  width: 85vw;
+  height: 85vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.centered {
+  margin: auto;
+}
+
+#input p{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  font-size: 0.75;
+}
+
+#terminal input {
+  background-color: transparent;
+  font-size: 1em;
+  color: #4cd711;
+  font-family: monospace;
+  border: none;
+  outline: none;
+  position: relative;
+  display: inline-block;
+  padding: none;
+  padding-bottom: 5px;
+}
+
+#input {
+  width: 100%;
+  border-bottom: 1px solid #4cd711;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 4s steps(40, end);
+}
+
+.felx-grow {
+  flex-grow: 1;
+}
+
+.flex-start-end {
+  justify-content: space-between;
+}
+
