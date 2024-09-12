@@ -1,7 +1,6 @@
 'use strict';
 (function() {
-  const PROMPTS = ['About Me', 'Generate ascii art', 'CSE 154 Tips', 'Past Classes', 'Snake Game', 'Resources'];
-
+  const PROMPTS = ['About Me', 'Generate ascii art', 'CSE 154 Tips', 'Past Classes', 'Snake Game', 'Resources', 'Help'];
   window.addEventListener('load', init);
 
   function init() {
@@ -11,12 +10,13 @@
 
   async function setupPrompts() {
     const ul = gen('ul');
-    const mainTerminal = id('main-terminal');
+    const mainTerminal = id('terminal-nav');
     mainTerminal.appendChild(ul);
     for (const prompt of PROMPTS) {
       const li = makePrompt(prompt);
       li.addEventListener('mouseover', swapSelectedPrompt);
       li.addEventListener('mouseout', clearSelectedPrompt);
+      li.addEventListener('click', clickPrompt);
       if (window.sessionStorage.getItem('animationPlayed') !== 'true') {
         await new Promise(resolve => setTimeout(resolve, 1500));
       }
@@ -49,6 +49,17 @@
     return li;
   }
 
+  function clickPrompt(event) {
+    const text = event.currentTarget.querySelector('p').textContent.toLowerCase();
+    qs('form input').value = text;
+    qs('form').dispatchEvent(new Event('submit'));
+  }
+
+
+
+  /**
+   * Helper functions
+   */
 
   function qs(selector) {
     return document.querySelector(selector);
