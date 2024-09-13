@@ -1,10 +1,10 @@
 'use strict';
+import { smartAddTypingEffect } from "./helpers.js";
+export const PROMPTS = ['Help', 'About Me', 'Generate ascii art', 'CSE 154 Tips', 'Snake Game', 'Resources'];
 (function() {
-  const PROMPTS = ['About Me', 'Generate ascii art', 'CSE 154 Tips', 'Past Classes', 'Snake Game', 'Resources', 'Help'];
   window.addEventListener('load', init);
 
   function init() {
-    addTypingEffect(qs('h1'));
     setupPrompts();
   }
 
@@ -12,23 +12,21 @@
     const ul = gen('ul');
     const mainTerminal = id('terminal-nav');
     mainTerminal.appendChild(ul);
+    const animationPlayed = window.sessionStorage.getItem('animationPlayed') === 'true';
+    const speed = 50;
+    const h1 = gen('h1');
+    qs('main').firstElementChild.before(h1);
+    const h1Text = 'Welcome to the Elias Net';
+    await smartAddTypingEffect(h1, h1Text, speed, !animationPlayed);
     for (const prompt of PROMPTS) {
-      const li = makePrompt(prompt);
+      const li = gen('li');
       li.addEventListener('mouseover', swapSelectedPrompt);
       li.addEventListener('mouseout', clearSelectedPrompt);
       li.addEventListener('click', clickPrompt);
-      if (window.sessionStorage.getItem('animationPlayed') !== 'true') {
-        await new Promise(resolve => setTimeout(resolve, 1500));
-      }
       ul.appendChild(li);
+      await makePrompt(li, prompt, !animationPlayed, speed)
     }
-    await window.sessionStorage.setItem('animationPlayed', 'true');
-  }
-
-  async function addTypingEffect(elm) {
-    if (window.sessionStorage.getItem('animationPlayed') !== 'true') {
-      elm.classList.add('typing');
-    }
+    window.sessionStorage.setItem('animationPlayed', 'true');
   }
 
   function swapSelectedPrompt(event) {
@@ -40,22 +38,18 @@
     qsa('.selected').forEach(p => p.classList.remove('selected'));
   }
 
-  function makePrompt(text) {
-    const li = gen('li');
+  async function makePrompt(parentElm, text, doTyping = false, speed = 50) {
     const p = gen('p');
-    addTypingEffect(p);
-    p.textContent = text;
-    li.appendChild(p);
-    return li;
+    parentElm.appendChild(p);
+    await smartAddTypingEffect(p, text, speed, doTyping);
   }
 
-  function clickPrompt(event) {
+  async function clickPrompt(event) {
     const text = event.currentTarget.querySelector('p').textContent.toLowerCase();
     qs('form input').value = text;
+    await new Promise(resolve => setTimeout(resolve, 100));
     qs('form').dispatchEvent(new Event('submit'));
   }
-
-
 
   /**
    * Helper functions

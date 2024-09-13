@@ -4,23 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <script src="index.js"></script>
-  <script src="terminal.js"></script>
+  <script src="index.js" type="module"></script>
+  <script src="terminal.js" type="module"></script>
   <title>The Elias Net</title>
 </head>
 <body>
   <!-- Sneaky you looking at the code -->
-  <main id="terminal" class="flex column">
-    <h1>Welcome to The Elias Net</h1>
-    <section class="flex flex-grow column flex-start">
-      <nav id="terminal-nav">
-      </nav>
-      <section id="terminal-output">
-        <form id="input">
-          <p></p>
-          <input type="text" class="white" autofocus>
-        </form>
-      </section>
+  <main id="terminal" class="flex column flex-start flex-grow">
+    <nav id="terminal-nav">
+    </nav>
+    <section id="terminal-output" class="flex-grow">
+      <form id="input">
+        <p></p>
+        <input type="text" class="white" autofocus>
+      </form>
     </section>
   </main>
 </body>

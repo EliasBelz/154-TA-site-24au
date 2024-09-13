@@ -1,6 +1,8 @@
 body {
   overflow: hidden;
   margin: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 #terminal {
@@ -12,6 +14,7 @@ body {
   height: 100vh;
   box-sizing: border-box;
 }
+
 
 .flex {
   display: flex;
@@ -45,21 +48,6 @@ body {
   width: 100%;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-.typing {
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 1.5s steps(40, end);
-}
-
 .flex-grow {
   flex-grow: 1;
 }
@@ -78,6 +66,8 @@ body {
 
 #terminal-nav {
   border-bottom: 1px solid #4cd711;
+  height: auto;
+  flex-shrink: 0;
 }
 
 #terminal-nav ul {
@@ -109,6 +99,12 @@ body {
 }
 
 #terminal-output {
-  /* overflow-y: scroll;
-  height: 100vh; */
+  overflow-y: auto;
+  height: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#terminal-output::-webkit-scrollbar {
+  display: none;
 }
