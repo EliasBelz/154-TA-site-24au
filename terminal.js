@@ -152,7 +152,7 @@ import { smartAddTypingEffect, scrollToBottom, statusCheck, qsa, qs, gen, API_RO
     } else if (e === 'secrets' || e === 'secret') {
       msg = 'Secret directories include: otter, sandwich, chatgpt, cse154, cse331, cse311, cse312, notes, chester, tal';
     } else if (e === 'chester' || e === 'tal') {
-      msg = 'One time I showed Tal a picture of my cat, and she said \"ew\".';
+      msg = 'One time I showed Tal a picture of my cat, and she said \"yuck\".';
     }
 
     return pCommand(msg);
