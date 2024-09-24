@@ -133,6 +133,7 @@ import { qs, id, API_ROOT, gen, statusCheck } from './helpers.js';
     clearInterval(gameLoopId);
     drawApple('black');
     setHighScore();
+    displayAddScore();
     const delay = 75;
     snake.forEach(({x, y}, i) => setTimeout(() => drawSquare(x, y, 'orange'), i * delay));
     await new Promise(resolve => setTimeout(resolve, (snake.length + 1) * delay));
@@ -143,7 +144,6 @@ import { qs, id, API_ROOT, gen, statusCheck } from './helpers.js';
     ctx.fillStyle = 'red';
     ctx.font = '50px Arial';
     ctx.fillText('Game Over', 300, 300);
-    await displayAddScore();
   }
 
   function updateScore() {
@@ -186,14 +186,14 @@ import { qs, id, API_ROOT, gen, statusCheck } from './helpers.js';
     }
   }
 
-  async function displayAddScore() {
+  function displayAddScore() {
     id('add').classList.remove('hidden');
     id('high-scores').classList.add('hidden');
   }
 
-
   async function addScore(name, score) {
     const n = name.slice(0,3);
+    // Very secure endpoint. Do not abuse.
     const res = await fetch(`${API_ROOT}/addScore?name=${n}&score=${score}`);
     await statusCheck(res);
   }

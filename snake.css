@@ -127,7 +127,7 @@ h1 {
 }
 
 li {
-  font-size: 2em;
+  font-size: 26px;
   margin: 0;
   padding-bottom: 12px;
 }
@@ -150,4 +150,12 @@ form {
 
 form button {
   margin-top: 20px;
+}
+
+#initials {
+  text-align: center;
+}
+
+#initials::placeholder {
+  text-align: center;
 }

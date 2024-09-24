@@ -18,7 +18,8 @@ import { smartAddTypingEffect, scrollToBottom, statusCheck, qsa, qs, gen, API_RO
     'resources': () => resources(),
     'cd': (e) => cd(e),
     'ls': () => ls(),
-    'otters' : () => otters(),
+    'otters': () => otters(),
+    "meow": () => pCommand('meow'),
   }
 
   const RANDOM_EXAMPLE_URLS = [
@@ -82,7 +83,8 @@ import { smartAddTypingEffect, scrollToBottom, statusCheck, qsa, qs, gen, API_RO
       scrollToBottom();
       await smartAddTypingEffect(elm, textContent, speed, true, byLine);
       if (extra) {
-        form.before(extra);
+        extra.classList.add('in-terminal');
+        elm.after(extra);
       }
       scrollToBottom();
     }
@@ -157,7 +159,15 @@ import { smartAddTypingEffect, scrollToBottom, statusCheck, qsa, qs, gen, API_RO
   }
 
   function about() {
-    return pCommand('I am a student at the University of Washington studying Computer Science.');
+    const textContent=
+    `Hi! My name is Elias and this is my third time TAing CSE 154 (the best cse class). I am a senior and this is my last quarter at UW :-(.
+
+Fun fact about me is I love to snowboard and worked at a ski shop for a few years. Snoqualmie pass is my local mountain but Mt. Baker is my favorite.
+If you have any questions about the course or need help with anything, feel free to ask!`;
+const a = gen('a');
+a.href = 'mailto:ebelz@cs.washington.edu';
+a.textContent = 'email me';
+    return {elm: gen('pre'), textContent, extra: a};
   }
 
   async function ascii(imgUrl) {
@@ -179,11 +189,24 @@ import { smartAddTypingEffect, scrollToBottom, statusCheck, qsa, qs, gen, API_RO
     const a = gen('a');
     a.href = imgUrl;
     a.target = '_blank';
+    a.textContent = "Original Image";
     return {elm: pre, textContent: text, speed: 50, byLine:true, extra: a};
   }
 
   function tips() {
-    return pCommand('Check out the CSE 154 course website for tips and resources!');
+    const textContent =
+    `1. Start your assignments early and ask questions on Ed.
+2. Linters suck but there are a few things you can do to make them suck less.
+  - Read the code quality guide and code with it in mind.
+  - Set aside time to fix linter errors, no ones a perfect programmer.
+  - Submit often. You can submit as many times as you want before the deadline.
+3. Be creative and follow what makes you curious. If you are interested in a topic, explore it further.
+4. Don't be afraid to ask questions. The course staff is here to help you.`
+    const a = gen('a');
+    a.href = 'https://courses.cs.washington.edu/courses/cse154/codequalityguide/';
+    a.target = '_blank';
+    a.textContent = 'Code Quality Guide';
+    return {elm: gen('pre'), textContent, extra: a};
   }
 
   function snake() {
@@ -196,7 +219,11 @@ import { smartAddTypingEffect, scrollToBottom, statusCheck, qsa, qs, gen, API_RO
   }
 
   function resources() {
-    return pCommand('Check out the CSE 154 course website for resources!');
+    const a = gen('a');
+    a.href = 'https://courses.cs.washington.edu/courses/cse154/24au/resources/index.html';
+    a.target = '_blank';
+    a.textContent = 'https://courses.cs.washington.edu/courses/cse154/24au/resources/index.html';
+    return {...pCommand('The CSE 154 course website has a great list of resources!'), extra: a};
   }
 
   function otters() {
