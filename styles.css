@@ -48,6 +48,9 @@ body {
   width: 100%;
 }
 
+#input input {
+  width: 80vw;
+}
 .flex-grow {
   flex-grow: 1;
 }
@@ -94,6 +97,11 @@ body {
   margin-right: 0.5em;
 }
 
+.ascii {
+  font-size: 0.75em;
+  line-height: 0.75em;
+}
+
 .white {
   color: #ffffff;
 }
@@ -107,4 +115,11 @@ body {
 
 #terminal-output::-webkit-scrollbar {
   display: none;
+}
+
+#terminal-output a {
+  color: #4cd711;
+}
+#terminal-output a:visited {
+  color: #4cd711;
 }

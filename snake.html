@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="snake.css">
+  <script src="snake.js" type="module"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake!</title>
+</head>
+<body>
+  <main>
+    <section>
+      <div>
+        <nav>
+          <button>< <span>back</span></button>
+        </nav>
+        <button id="play-again">Play Again</button>
+      </div>
+      <div id="scores">
+        <div id="high-scores"></div>
+        <div id="add" class="hidden">
+          <h1>Add Your Score?</h1>
+          <form>
+            <div>
+              <label for="initials">initials:</label>
+              <input type="text" id="initials" initials="initials" maxlength="3" required>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <article>
+      <div>
+        <section>
+          <p id="score">score: <span>0</span></p>
+          <p>Use arrow keys or wasd to navigate</p>
+          <p id="high-score">high-score: <span></span></p>
+        </section>
+        <canvas id="game" width="800" height="800">
+        </canvas>
+      </div>
+    </article>
+  </main>
+</body>
+</html>

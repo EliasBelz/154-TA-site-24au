@@ -1,5 +1,5 @@
 'use strict';
-import { smartAddTypingEffect } from "./helpers.js";
+import { smartAddTypingEffect, qs, gen, id, qsa } from "./helpers.js";
 export const PROMPTS = ['Help', 'About Me', 'Generate ascii art', 'CSE 154 Tips', 'Snake Game', 'Resources'];
 (function() {
   window.addEventListener('load', init);
@@ -50,25 +50,4 @@ export const PROMPTS = ['Help', 'About Me', 'Generate ascii art', 'CSE 154 Tips'
     await new Promise(resolve => setTimeout(resolve, 100));
     qs('form').dispatchEvent(new Event('submit'));
   }
-
-  /**
-   * Helper functions
-   */
-
-  function qs(selector) {
-    return document.querySelector(selector);
-  }
-
-  function qsa(selector) {
-    return document.querySelectorAll(selector);
-  }
-
-  function gen(tag) {
-    return document.createElement(tag);
-  }
-
-  function id (id) {
-    return document.getElementById(id);
-  }
-
 })()
